@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexc</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        .logo-image {
+            width: 100px;
+            height: auto;
+        }
+
+        .header__navigation {
+            flex: 1;
+        }
+
+        .navigation-links {
+            list-style: none;
+            display: flex;
+            font-size: 17px;
+            gap: 150px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .header__sign {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header__sign button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(243, 157, 157);
+            cursor: pointer;
+        }
+        .header__sign button a{color: white;}
+
+        .product {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .product .product__item {
+            width: 25%;
+            background-color: rgb(194, 240, 194);
+            border-radius: 5px;
+        }
+
+        .product .product__item .product__item--image {
+            width: 100%;
+            height: 180px;
+        }
+
+        .product .product__item .product__item--cart:hover {
+            cursor: pointer;
+        }
+
+        .product .product__item .product__item--image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .pages .list-page {
+            display: flex;
+            list-style: none;
+            width: 400px;
+            margin: 30px auto;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .pages .list-page li {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgb(243, 157, 157);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .list-page span {
+            cursor: pointer;
+        }
+
+        .page {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header__logo">
+            <img src="https://marketplace.canva.com/EAFCpgodbhs/4/0/1600w/canva-black-minimal-cake-logo-oNMmHcELX5Q.jpg" alt="Cake Shop Logo" class="logo-image">
+        </div>
+        <div class="header__navigation">
+            <ul class="navigation-links">
+                <li><a href="#">About shop</a></li>
+                <li><a href="#">Order Form</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Review</a></li>
+            </ul>
+        </div>
+        <div class="header__sign">
+            <button class="header__sign--signIn"><a href="login.html">Sign In</a></button>
+            <button class="header__sign--signUp"><a href="register.html">Sign Up</a></button>
+        </div>
+    </div>
+    
+    <div class="product">
+    </div>
+    <div class="pages">
+        <ul class="list-page">
+        </ul>
+    </div>
+    <script>
+        let products = [
+            {
+                name: "Cheese cake",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Chesse-Cake-2.jpeg",
+                id: 100,
+            },
+            {
+                name: "Tiramisu",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/tiramisu-cake.jpg",
+                id: 101,
+            },
+            {
+                name: "Black Forest",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/black-forest-cake.jpg",
+                id: 102,
+            },
+            {
+                name: "Victoria Sponge",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/banh-ngot-victoria-sandwich-cake.jpg",
+                id: 103,
+            },
+            {
+                name: "Sachertorte",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/sachertorte.jpg",
+                id: 104,
+            },
+            {
+                name: "Swedish Princess",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/banh-ngot-Swedish-Princess.jpg",
+                id: 105,
+            },
+            {
+                name: "Lamington",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Lamington.jpg",
+                id: 106,
+            },
+            {
+                name: "Madeleines",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/lemon-brown-butter-madeleines.jpg",
+                id: 107,
+            },
+            {
+                name: "Mochi",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Japanese-Mochi.jpg",
+                id: 108,
+            },
+            {
+                name: "Dorayaki",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Dorayaki-banh-ran.jpg",
+                id: 109,
+            },
+            {
+                name: "Macaron",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/banh-macaron-nhan-kem-socola-ganache-sieu-de-thuong.jpg",
+                id: 110,
+            },
+            {
+                name: "Pandan",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/pandan-chiffon-cake.jpg",
+                id: 111,
+            },
+            {
+                name: "Tapioca",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Tapioca-brazil.jpg",
+                id: 112,
+            },
+            {
+                name: "Pavlova",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Pavlova.jpg",
+                id: 113,
+            },
+            {
+                name: "Apple pie",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Apple-Pie.jpg",
+                id: 114,
+            },
+            {
+                name: "Gateau St. Honore",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/gateau-st-honore.jpg",
+                id: 115,
+            },
+            {
+                name: "Limburg pie",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Limburg-Pie-ha-lan.jpg",
+                id: 116,
+            },
+            {
+                name: "Carac",
+                price: 50000,
+                image: "https://anhquanbakery.com/uploads/images/Carac.jpg",
+                id: 117,
+            },
+        ]
+        localStorage.setItem("products", JSON.stringify(products));
+
+        let itemPage = 6;
+        let totalPage = Math.ceil(products.length / itemPage);
+        let currentPage = 1;
+        let start;
+        let end;
+        function startEnd(current) {
+            start = (current - 1) * itemPage;
+            end = current * itemPage;
+        }
+        startEnd(1);
+        function showProduct() {
+            let text = "";
+            for (let i = 0; i < products.length; i++) {
+                if (i >= start && i < end) {
+                    text +=
+                        `
+                        <div class="product__item">
+                            <div class="product__item--image">
+                                <img src="${products[i].image}" alt="">
+                            </div>
+                            <p class="product__item--name">
+                                Name : ${products[i].name}
+                            </p>
+                            <p class="product__item--price">
+                                Price : ${products[i].price}
+                            </p>
+                            <p onclick=addToCart(${products[i].id}) class="product__item--cart">
+                                Click để mua
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                            </p>
+                        </div>
+                        `
+                }
+            }
+            document.getElementsByClassName("product")[0].innerHTML = text;
+        }
+        showProduct();
+        function showListPage() {
+            let text = "";
+            for (let i = 1; i <= totalPage; i++) {
+                text +=
+                    `
+                    <li onclick=choosePage(${i}) class="page-item ">${i}</li>
+                    `
+            }
+            document.getElementsByClassName("list-page")[0].innerHTML =
+                `
+                <span  onclick="prePage()" class="material-symbols-outlined pre">
+                    arrow_back_ios
+                </span>
+                ${text}
+                <span onclick="nextPage()" class="material-symbols-outlined next">
+                    arrow_forward_ios
+                </span>
+                `
+            document.getElementsByClassName("page-item")[0].classList.add("page");
+        }
+        showListPage()
+        function choosePage(a) {
+            let pageItem = document.getElementsByClassName("page-item");
+            currentPage = a;
+            for (let i = 0; i < pageItem.length; i++) {
+                if (i == a - 1) {
+                    pageItem[i].classList.add("page");
+                } else {
+                    pageItem[i].classList.remove("page");
+                }
+            }
+            startEnd(a);
+            showProduct();
+        }
+        function nextPage() {
+            currentPage++;
+            if (currentPage > totalPage) {
+                currentPage = totalPage;
+            }
+            choosePage(currentPage);
+        }
+        function prePage() {
+            currentPage--;
+            if (currentPage < 1) {
+                currentPage = 1;
+            }
+            choosePage(currentPage);
+        }
+        function addToCart(idProduct) {
+            console.log("idProduct", idProduct);
+            let checkLogin = localStorage.getItem("idUser");
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+
+            if (!checkLogin) {
+                console.log("vui lòng đăng nhập để mua hàng");
+                return;
+            }
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].id == checkLogin) {
+                    for (let j = 0; j < products.length; j++) {
+                        if (products[j].id == idProduct) {
+                            console.log("33333", products[j]);
+                            let result = users[i].cart.findIndex((item) => {
+                                return item.id == products[j].id
+                            })
+                            if (result != -1) {
+                                users[i].cart[result].quanlity = ++users[i].cart[result].quanlity;
+                                localStorage.setItem("users", JSON.stringify(users));
+                            } else {
+                                users[i].cart.push({ ...products[j], quanlity: 1 });
+                                localStorage.setItem("users", JSON.stringify(users));
+                            }
+                            break;
+                        }
+
+                    }
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>
+

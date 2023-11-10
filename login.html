@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section16</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: url(https://image.slidesdocs.com/responsive-images/background/marketing-candle-birthday-cake-car-colorful-abstract-powerpoint-background_912a26b8d1__960_540.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .login {
+            background-color: orange;
+            width: 400px;
+            margin: 200px auto;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .login label {
+            display: inline-block;
+            min-width: 120px;
+        }
+
+        .login input {
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 5px;
+        }
+
+        .login button {
+            margin: 0 auto;
+            padding: 5px;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            background-color: #F5E8E8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login">
+        <label for="">email</label>
+        <input id="email" type="text"> <br>
+        <label for="">password</label>
+        <input id="password" type="password"> <br>
+        <button onclick="signIn()"><a href="index.html" style="text-decoration: none; color:white;">SignIn</a></button>
+        <p> bạn chưa có tài khoản <a href="register.html"> SignUp</a></p>
+    </div>
+    <script>
+        function signIn() {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let email=document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            for (let i = 0; i < users.length; i++) {
+                if(users[i].email==email&&users[i].password==password){
+                    localStorage.setItem("idUser",users[i].id);
+                    window.location.href="./index.html";
+                    return;
+                }
+                alert("Tài khoản không tồn tại!");
+            }
+        }
+    </script>
+</body>
+
+</html>
