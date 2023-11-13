@@ -4,20 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section16</title>
+    <title>Document</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            background: url(https://image.slidesdocs.com/responsive-images/background/marketing-candle-birthday-cake-car-colorful-abstract-powerpoint-background_912a26b8d1__960_540.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
+
         .register {
             background-color: #dbdbdb;
             width: 400px;
@@ -61,61 +55,22 @@
         <input id="password" type="password"> <br>
         <label for="">confirmpassword</label>
         <input id="confirmPassword" type="text"> <br>
-        <button onclick="validateSignUp()">SignUp</button>
-        <p> bạn đã có tài khoản <a href="./login.html"> SignIn</a></p>
+        <button onclick="signUp()">SignUp</button>
+        <p> bạn đã có tài khoản <a href="login.html"> SignIn</a></p>
 
     </div>
-    <p id="errorMessage" style="color: red; text-align: center; font-size: 20px;"></p>
+
     <script>
+        /*
+            Tạo mảng chứa danh sách user đăng kí
+            khi người dùng nhập dữ liệu lấy thông tin người dùng nhập
+            khởi tạo đỐi tượng  chứa các thông tin người dùng nhập
+            Kiểm tra xem email đã từng đăng kí hay chưa
+             + Nếu có báo email đã được đăng kí
+             + Nếu không push vào mảng danh sách user
+         */
         function uuid() {
             return Math.floor(Math.random()*885688785522+new Date().getMilliseconds());
-        }
-        function validateSignUp() {
-            let userName = document.getElementById("userName").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let confirmPassword = document.getElementById("confirmPassword").value;
-
-            if (!userName || !email || !password || !confirmPassword) {
-                let missingFields = [];
-                if (!userName) missingFields.push("Username");
-                if (!email) missingFields.push("Email");
-                if (!password) missingFields.push("Password");
-                if (!confirmPassword) missingFields.push("Confirm Password");
-
-                let errorMessage = "Vui lòng nhập đầy đủ thông tin cho các trường: " + missingFields.join(", ");
-                document.getElementById("errorMessage").textContent = errorMessage;
-                return;
-            }
-
-            signUp();
-        }
-
-        // Kiểm tra tất cả trường đã được nhập trước khi kích hoạt nút "SignUp"
-        document.getElementById("userName").addEventListener("input", checkInputFields);
-        document.getElementById("email").addEventListener("input", checkInputFields);
-        document.getElementById("password").addEventListener("input", checkInputFields);
-        document.getElementById("confirmPassword").addEventListener("input", checkInputFields);
-
-        function validateSignUp() {
-            let userName = document.getElementById("userName").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let confirmPassword = document.getElementById("confirmPassword").value;
-
-            let missingFields = [];
-            if (!userName) missingFields.push("Username");
-            if (!email) missingFields.push("Email");
-            if (!password) missingFields.push("Password");
-            if (!confirmPassword) missingFields.push("Confirm Password");
-
-            if (missingFields.length > 0) {
-                let errorMessage = "Bạn chưa nhập " + missingFields.join(", ");
-                document.getElementById("errorMessage").textContent = errorMessage;
-                return;
-            }
-
-            signUp();
         }
         function signUp() {
             let users=JSON.parse(localStorage.getItem("users"))||[];
@@ -130,29 +85,23 @@
                 id:uuid(),
                 cart:[],
             }
-
+            // lọc xem user đã đăng kí email đó chưa hay chưa
             let find= users.filter((item)=>{
                 return item.email==email;
             })
-            // Kiểm tra xem email có chứa dấu @ hay không
-            if (email.indexOf('@') === -1) {
-                alert("Email không hợp lệ");
-                return;
-            }
-            if (find.length!=0){
+            if(find.length!=0){
                 console.log("email đã được đăng kí");
                 return;
             }
-
             users.push(obj);
             localStorage.setItem("users",JSON.stringify(users));
             document.getElementById("userName").value="";
             document.getElementById("email").value="";
             document.getElementById("password").value="";
             document.getElementById("confirmPassword").value="";
-            window.location.href="login.html";
+            window.location.href="./login.html";
         }
     </script>
 </body>
-</html>
 
+</html>
